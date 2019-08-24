@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: elephant
+  labels:
+    name: myapp-pod
+    app: myapp
+    type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: polinux/stress
+      resources:
+        limits:
+          memory: "20Mi"
