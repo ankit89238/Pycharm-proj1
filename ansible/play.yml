@@ -1,5 +1,5 @@
 - name: Deploy a web application
-  hosts: db_and_web_server1,db_and_web_server2
+  hosts: machine
   vars:
     db_name: employee_db
     db_user: db_user
@@ -16,10 +16,10 @@
         - python-mysqldb
 
     - name: Install MySQL database
-        apt: name={{ item }} state=installed
-        with_items:
-          - mysql-server
-          - mysql-client
+      apt: name={{ item }} state=installed
+      with_items:
+        - mysql-server
+        - mysql-client
 
     - name: Start MySQL service
       service:

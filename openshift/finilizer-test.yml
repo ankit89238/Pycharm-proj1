@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: finalizer-test
+  namespace: myproject
+  labels:
+    app: finalizer-test
+  finalizers:
+    - finalizer.extensions/v1beta1
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: finalizer-test
+    spec:
+      containers:
+        - name: hieveryone
+          image: openshiftkatacoda/blog-django-py
+          imagePullPolicy: Always
+          ports:
+            - name: helloworldport
+              containerPort: 80
